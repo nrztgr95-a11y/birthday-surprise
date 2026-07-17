@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📸 Album 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ec4,#ffd6e7,#b57edc,#6c5ce7);
+background-size:400% 400%;
+animation:bg 15s infinite alternate;
+overflow-x:hidden;
+}
+
+@keyframes bg{
+0%{background-position:left;}
+100%{background-position:right;}
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:40px auto;
+}
+
+h1{
+text-align:center;
+color:white;
+font-size:50px;
+margin-bottom:10px;
+}
+
+p{
+text-align:center;
+color:white;
+font-size:22px;
+margin-bottom:35px;
+}
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+
+}
+
+.photo{
+
+background:white;
+padding:12px;
+border-radius:20px;
+cursor:pointer;
+transition:.35s;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.photo:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+}
+
+.photo img{
+
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:15px;
+
+}
+
+.popup{
+
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:9999;
+
+}
+
+.popup img{
+
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+box-shadow:0 0 40px white;
+
+}
+
+.close{
+
+position:absolute;
+top:20px;
+right:40px;
+font-size:55px;
+color:white;
+cursor:pointer;
+
+}
+
+.back{
+
+display:block;
+width:230px;
+margin:50px auto;
+padding:16px;
+text-align:center;
+text-decoration:none;
+background:white;
+color:#ff2d75;
+font-size:22px;
+font-weight:bold;
+border-radius:50px;
+
+}
+
+.back:hover{
+
+background:#ffe4ef;
+
+}
+
+.heart{
+
+position:fixed;
+bottom:-40px;
+pointer-events:none;
+animation:floatUp linear forwards;
+
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📸 Album 1 💖</h1>
+
+<p>Click any picture to view it in full screen.</p>
+
+<div class="gallery">
+
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/749343144_2187845535280972_1306548538111264938_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_ohc=sG2uDGPXIw8Q7kNvwGYQrXy&_nc_oc=AdrXbgEzjCJjxv5cJqLOYgq25m9ZsmFqkFA2IR3bbTC31PKkgJQE9Y3dCGI3yYhZnCM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wHqjBDwmgLOEZqPQKj0-U0fRl8cNKEJMHrrTQb1r4AECQ&oe=6A803BE2" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/746058102_1001333576137696_7137233730187090092_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=GSlTEmloGPQQ7kNvwGxXNZc&_nc_oc=AdpHF5FYWyIYceVlmRVOTPIbySQk-kw9YXWWA6AcFWQMMctjV2SGwwMS4Maz1f6MwWg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF4Pk6-OZxI_aCLbwuKVbXtPw4Sw317I6G4Id15G7iJvQ&oe=6A806532" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/748718120_1309062777879372_7003188680911612448_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=l7zuF8-x9LkQ7kNvwGXpFeA&_nc_oc=AdqTiac40xx-dkT_eCrYwTflIi1hzf9Y0uWGtflNdc-xU3D4srvxu2FrmvzAfWQefgY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wHmdkkvg-Hh5VCUSdzK9Uj75Z-zXU1cWPCe5YHx6TeTqw&oe=6A803E0F" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/746540405_1030847625992231_8546828410133315763_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=welym_bsewwQ7kNvwEvvM9g&_nc_oc=AdqYp6zrcuxfcLHx2-1NXu4CIZKgnvlG2t307DfNilsgdne0FHzUe6Cxz4Mkq1CMdvs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wG3ZFB5T9Hv684hRSPuOgENC3wuYy0Yxzbl2tW6voVZGw&oe=6A8056B4" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/747624983_2076698596215948_5217453072277707410_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=heQMUC6YclEQ7kNvwEytWQL&_nc_oc=Adp-ogCbHi--z6SEmxuQH_briK2jhypgn_z_jx7PjhshzMqbpgsgGzHm6w_rjKN21VY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wFK2cxNEE-1x46ouXkthCZgGrcxeJ-KfB-poQtdJ7hRfQ&oe=6A805E6F" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/749459183_1417034223819691_3524907419375652101_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_ohc=cvnvCSz0ecMQ7kNvwFSbTRj&_nc_oc=AdpQMmuTU0BRqB4Vnka3z1ZNCNsNO3mv1cSQGypW6eTyvOVYwxgm6CQgbUkweODNsqs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wGrp8Jooj89eCwHBOp6NDFWq0T4IJ3fZc3Lo2QcpthoPw&oe=6A80620A" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/746823239_1838869907521377_5702531291369794443_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=9f807c&_nc_ohc=6j55hJb2H7UQ7kNvwEF6xTe&_nc_oc=AdpeqDrWg0SyHSe36OjGrb1iGkI4MSqeLkMb2ZMPg77He7so-NyMPk9K13ieziRRRiQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wFv16rLx1q7S2MS1k_F9wuSSI67sox1s0rtXncLEOqqZQ&oe=6A8051A0" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/746742350_969993762764215_5306685645229987050_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=6y5MDzVWQhwQ7kNvwHUwPHV&_nc_oc=AdqMqMUI_qo4rjRIP_xKOlnwbyr7ZUq-ElKVEFvFrCVUDjOJUv-UzwXyxiPOmdbV80A&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF0PGuhumSsDvBaqkd0ojBEcAT5zpPq17-4fteKUVbW9A&oe=6A80552C" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/746451976_1538744554664255_8816296737152376180_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=zfaDp5-YRT0Q7kNvwFaRyB7&_nc_oc=Adoh4xR83C7s1Q3PJNpU3B9OSYIUU6mQlqs_YzahEPyTg9UZMG6fB1SnhPFDmInrhVc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wFnWEIgOvBUwzVCz5f3BXuylxlrFEG3F76UAtnyZmqwhg&oe=6A8054FB" onclick="show(this.src)"></div>
+<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/749300389_862230593349269_3921845933834434727_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=lvKqBGQ8SLkQ7kNvwGj3h6J&_nc_oc=Adp508IqHo4A1iupyMp8vAkhidTEIPHwAt0BvFax0UeQmdg-vPlOxKF9m0MsMMEyZVQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wE7FRwdwr0UvldM7ML9FdHIlwO_G0VsZrvlEZI2GKAoUw&oe=6A804F2F" onclick="show(this.src)"></div>
+
+</div>
+
+<a href="pictures.html" class="back">⬅ Back to Albums</a>
+
+</div>
+
+<div class="popup" id="popup" onclick="hide()">
+<span class="close">&times;</span>
+<img id="popupImage">
+</div>
+
+<script>
+
+function show(src){
+document.getElementById("popup").style.display="flex";
+document.getElementById("popupImage").src=src;
+}
+
+function hide(){
+document.getElementById("popup").style.display="none";
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape") hide();
+});
+
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML=["❤️","💖","💕","🌸","✨"][Math.floor(Math.random()*5)];
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(20+Math.random()*25)+"px";
+h.style.animationDuration=(4+Math.random()*5)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),9000);
+},300);
+
+</script>
+
+</body>
+</html>

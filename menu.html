@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Birthday Surprise 💖</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+
+background:linear-gradient(-45deg,#ff9ec4,#ffb6d9,#b57edc,#6c5ce7,#ff9ec4);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+width:550px;
+
+padding:45px;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+text-align:center;
+
+position:relative;
+
+z-index:2;
+
+border:1px solid rgba(255,255,255,.25);
+
+}
+
+h1{
+
+font-size:48px;
+
+color:white;
+
+margin-bottom:10px;
+
+}
+
+p{
+
+font-size:22px;
+
+color:white;
+
+margin-bottom:35px;
+
+}
+
+.btn{
+
+display:block;
+
+margin:18px 0;
+
+padding:18px;
+
+text-decoration:none;
+
+background:rgba(255,255,255,.9);
+
+color:#ff2d75;
+
+font-size:22px;
+
+font-weight:bold;
+
+border-radius:18px;
+
+transition:.35s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+background:white;
+
+box-shadow:0 0 25px pink;
+
+}
+
+.heart{
+
+position:fixed;
+
+bottom:-40px;
+
+pointer-events:none;
+
+animation:heartFloat linear forwards;
+
+z-index:0;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:translateY(0) scale(.8);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1.8);
+
+opacity:0;
+
+}
+
+}
+
+.star{
+
+position:fixed;
+
+color:white;
+
+pointer-events:none;
+
+animation:twinkle infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+0%{
+opacity:.2;
+transform:scale(.7);
+}
+
+100%{
+opacity:1;
+transform:scale(1.5);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎂 Birthday Surprise 💖</h1>
+
+<p>Choose a page below ❤️</p>
+
+<a href="memory.html" class="btn">
+📸 Childhood Memories
+</a>
+
+<a href="birthdaywish.html" class="btn">
+🎂 Birthday Wish
+</a>
+
+<a href="pictures.html" class="btn">
+🖼️ Pictures
+</a>
+
+<a href="thankyou.html" class="btn">
+💌 Thank You
+</a>
+
+</div>
+
+<script>
+
+/* Floating Hearts */
+
+function heart(){
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+const emoji=[
+"❤️",
+"💖",
+"💕",
+"💗",
+"💞",
+"🌸",
+"✨",
+"🩷"
+];
+
+h.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(20+Math.random()*35)+"px";
+
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},9000);
+
+}
+
+setInterval(heart,250);
+
+/* Stars */
+
+function star(){
+
+const s=document.createElement("div");
+
+s.className="star";
+
+s.innerHTML="✦";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.fontSize=(8+Math.random()*18)+"px";
+
+s.style.animationDuration=(1+Math.random()*3)+"s";
+
+document.body.appendChild(s);
+
+}
+
+for(let i=0;i<120;i++){
+
+star();
+
+}
+
+</script>
+
+</body>
+</html>
