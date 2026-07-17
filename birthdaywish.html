@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 Happy Birthday 💖</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Georgia, serif;
+}
+
+body{
+    background:linear-gradient(135deg,#fff0f5,#ffe6f2,#fffafc);
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* Left Rose */
+.rose{
+    position:fixed;
+    left:25px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:120px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* Right Lotus */
+.lotus{
+    position:fixed;
+    right:25px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:120px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(-50%);
+}
+
+50%{
+transform:translateY(-56%);
+}
+
+}
+
+/* Card */
+
+.card{
+
+background:white;
+
+width:800px;
+
+padding:50px;
+
+border-radius:30px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+text-align:center;
+
+position:relative;
+
+z-index:2;
+
+}
+
+h1{
+
+font-size:52px;
+
+color:#ff2d75;
+
+margin-bottom:10px;
+
+}
+
+.line{
+
+width:130px;
+
+height:5px;
+
+background:#ff4d88;
+
+margin:20px auto;
+
+border-radius:10px;
+
+}
+
+.message{
+
+font-size:21px;
+
+line-height:2;
+
+color:#555;
+
+text-align:justify;
+
+margin-top:20px;
+
+}
+
+.message b{
+
+color:#ff2d75;
+
+}
+
+button{
+
+margin-top:40px;
+
+padding:15px 35px;
+
+font-size:20px;
+
+background:#ff4d88;
+
+color:white;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#ff2167;
+
+transform:scale(1.05);
+
+}
+
+/* Floating Hearts */
+
+.heart{
+
+position:fixed;
+
+bottom:-40px;
+
+pointer-events:none;
+
+animation:rise linear forwards;
+
+z-index:1;
+
+}
+
+@keyframes rise{
+
+0%{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="rose">🌹</div>
+
+<div class="lotus">🪷</div>
+
+<div class="card">
+
+<h1>🎂 Happy Birthday 🎂</h1>
+
+<div class="line"></div>
+
+<div class="message">
+
+Today is a very special day because it marks the day someone truly wonderful came into this world. On your birthday, I just want to wish you endless happiness, good health, success, and countless beautiful moments.
+
+<br><br>
+
+May your smile always shine brightly, your dreams come true, and your heart always be filled with love and peace. You deserve all the happiness this world has to offer because you bring so much joy to the people around you.
+
+<br><br>
+
+Thank you for being such an amazing person. Your kindness, strength, and beautiful heart make you truly special. Every memory we've shared is something I'll always treasure, and I hope we create many more wonderful memories together.
+
+<br><br>
+
+As you begin another year of your life, may every new day bring exciting opportunities, unforgettable adventures, and reasons to smile. Never stop believing in yourself because you are capable of achieving incredible things.
+
+<br><br>
+
+On this special day, I hope you laugh a little louder, smile a little brighter, and celebrate every wonderful moment with the people who care about you. May this birthday become one of the happiest days of your life.
+
+<br><br>
+
+<b>Happy Birthday once again! 🎉🎂</b>
+
+<br><br>
+
+May this year be filled with love ❤️, happiness 🌸, success 🌟, and countless unforgettable memories. No matter what happens, always remember that you are appreciated, cherished, and incredibly special.
+
+<br><br>
+
+Have the most wonderful birthday ever! 💖🎈🎁
+
+</div>
+
+<button onclick="location.href='thankyou.html'">
+Next ➜
+</button>
+
+</div>
+
+<script>
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+const emojis=["💖","💕","❤️","🌸","✨","💗"];
+
+heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
