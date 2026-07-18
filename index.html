@@ -1,70 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Birthday Surprise</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
 height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff9ec4,#ffd6e7,#fbc2eb);
-font-family:Arial;
+
+background:linear-gradient(-45deg,#ff9ec4,#ffd6e7,#ffc0cb,#ffe4ec,#ffb6c1);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+
 }
 
-.box{
-background:white;
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.card{
+
+width:420px;
+
 padding:40px;
-width:400px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
 text-align:center;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+z-index:5;
+
 }
 
 h1{
-color:#ff2d75;
+
+font-size:38px;
+
+color:white;
+
+margin-bottom:15px;
+
+}
+
+p{
+
+font-size:18px;
+
+color:white;
+
+margin-bottom:20px;
+
 }
 
 input{
-width:90%;
-padding:12px;
-font-size:18px;
-margin-top:15px;
-border-radius:10px;
-border:2px solid pink;
+
+width:100%;
+
+padding:15px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:15px;
+
+outline:none;
+
+margin-bottom:20px;
+
 }
 
 button{
-margin-top:20px;
-padding:12px 30px;
-font-size:18px;
-background:#ff4d88;
-color:white;
+
+width:100%;
+
+padding:15px;
+
+font-size:22px;
+
 border:none;
-border-radius:10px;
+
+border-radius:15px;
+
+background:#ff4d88;
+
+color:white;
+
 cursor:pointer;
+
+transition:.3s;
+
 }
 
 button:hover{
+
 background:#ff2167;
+
+transform:scale(1.05);
+
 }
+
+/* Floating Flowers */
+
+.item{
+
+position:fixed;
+
+bottom:-50px;
+
+pointer-events:none;
+
+animation:float linear forwards;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="box">
+<div class="card">
 
 <h1>💖 Welcome My Special Person 💖</h1>
 
-<p>🎂 Hint: Your Birthday(nepali date)</p>
+<p>🌸 Hint: Your Birthday 🌸</p>
 
 <input type="password" id="pass" placeholder="Enter Password">
-
-<br>
 
 <button onclick="check()">Unlock ❤️</button>
 
@@ -76,15 +186,60 @@ function check(){
 
 let p=document.getElementById("pass").value;
 
-if(p=="190503"){
-location.href="menu.html";
+if(p=="15082008"){
+
+window.location.href="menu.html";
+
 }else{
-alert("Wrong Password ❤️");
+
+window.location.href="wrongpass.html";
+
 }
 
 }
+
+function flower(){
+
+const f=document.createElement("div");
+
+f.className="item";
+
+const emoji=[
+
+"🌹",
+"🌸",
+"🌺",
+"💖",
+"💕",
+"❤️",
+"🪷",
+"🌷",
+"✨"
+
+];
+
+f.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+
+f.style.left=Math.random()*100+"vw";
+
+f.style.fontSize=(20+Math.random()*35)+"px";
+
+f.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(f);
+
+setTimeout(()=>{
+
+f.remove();
+
+},9000);
+
+}
+
+setInterval(flower,220);
 
 </script>
 
 </body>
+
 </html>
