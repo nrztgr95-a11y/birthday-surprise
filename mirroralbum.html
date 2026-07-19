@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🪞 Mirror Pic Album</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#ff9ec4,#ffd6e7,#cdb4db,#bde0fe);
+min-height:100vh;
+overflow-x:hidden;
+
+}
+
+.container{
+
+width:90%;
+max-width:1300px;
+margin:auto;
+padding:40px;
+
+}
+
+h1{
+
+text-align:center;
+font-size:50px;
+color:white;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+font-size:22px;
+color:white;
+margin-bottom:40px;
+
+}
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+
+}
+
+.photo{
+
+background:white;
+padding:10px;
+border-radius:20px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.photo:hover{
+
+transform:translateY(-8px) scale(1.04);
+
+}
+
+.photo img{
+
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:15px;
+
+}
+
+.popup{
+
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:9999;
+
+}
+
+.popup img{
+
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+
+}
+
+.close{
+
+position:absolute;
+top:20px;
+right:40px;
+font-size:60px;
+color:white;
+cursor:pointer;
+
+}
+
+.back{
+
+display:block;
+width:250px;
+margin:45px auto;
+padding:16px;
+text-align:center;
+text-decoration:none;
+background:white;
+color:#ff2d75;
+font-size:22px;
+font-weight:bold;
+border-radius:50px;
+transition:.3s;
+
+}
+
+.back:hover{
+
+background:#ffe4ef;
+transform:scale(1.05);
+
+}
+
+.heart{
+
+position:fixed;
+bottom:-40px;
+pointer-events:none;
+animation:floatUp linear forwards;
+
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🪞 Mirror Pic Album 💖</h1>
+
+<p class="subtitle">
+Every mirror picture reminds me of another beautiful moment. ❤️
+</p>
+
+<div class="gallery">
+
+<div class="photo"><img src="mirror1.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror2.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror3.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror4.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror5.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror6.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror7.jpg" onclick="show(this.src)"></div>
+
+<div class="photo"><img src="mirror8.jpg" onclick="show(this.src)"></div>
+
+</div>
+
+<a href="menu.html" class="back">
+🏠 Back to Menu
+</a>
+
+</div>
+
+<div class="popup" id="popup">
+
+<span class="close" onclick="hide()">&times;</span>
+
+<img id="popupImage">
+
+</div>
+
+<script>
+
+function show(src){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("popupImage").src=src;
+
+}
+
+function hide(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+hide();
+
+}
+
+});
+
+setInterval(function(){
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+const emojis=["💖","💕","❤️","🌸","🌹","✨"];
+
+h.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(20+Math.random()*30)+"px";
+
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+
+h.remove();
+
+},9000);
+
+},300);
+
+</script>
+
+</body>
+</html>
