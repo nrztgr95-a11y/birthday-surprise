@@ -1,24 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Thank You ❤️</title>
 
-
 <style>
-
-/* =========================
-   RESET
-========================= */
 
 * {
     margin: 0;
@@ -26,108 +15,76 @@
     box-sizing: border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-
     min-height: 100vh;
-
     overflow-x: hidden;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family: Georgia, "Times New Roman", serif;
 
     color: white;
 
     background:
         radial-gradient(
             circle at center,
-            #54103f 0%,
-            #21001c 45%,
+            #591044 0%,
+            #26001f 45%,
             #050005 100%
         );
-
 }
 
 
-/* =========================
-   BACKGROUND TEXT
-========================= */
+/* BACKGROUND */
 
 .background-text {
-
     position: fixed;
-
     inset: -100px;
 
     display: flex;
-
     flex-wrap: wrap;
 
     justify-content: center;
-
     align-content: center;
 
     gap: 30px 45px;
 
-    transform:
-        rotate(-10deg)
-        scale(1.2);
+    transform: rotate(-10deg) scale(1.2);
 
-    opacity: 0.06;
+    opacity: 0.07;
 
     pointer-events: none;
 
     z-index: 0;
-
 }
 
-
 .background-text span {
-
     color: #ff69c9;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
     font-size: 28px;
 
     font-weight: bold;
 
     white-space: nowrap;
-
 }
 
 
-/* =========================
-   GLOW
-========================= */
+/* GLOW */
 
 .glow {
-
     position: fixed;
 
     width: 600px;
-
     height: 600px;
 
     left: 50%;
-
     top: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     background:
         radial-gradient(
@@ -141,16 +98,12 @@ body {
     pointer-events: none;
 
     z-index: 0;
-
 }
 
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* HEARTS */
 
 .heart {
-
     position: fixed;
 
     bottom: -50px;
@@ -167,49 +120,30 @@ body {
         0 0 10px #ff1493,
         0 0 25px #ff1493;
 
-    animation:
-        floatHeart 9s linear infinite;
-
+    animation: floatHeart 9s linear infinite;
 }
-
 
 @keyframes floatHeart {
 
     0% {
-
-        transform:
-            translateY(0)
-            scale(0.5);
-
+        transform: translateY(0) scale(0.5);
         opacity: 0;
-
     }
 
     20% {
-
         opacity: 0.8;
-
     }
 
     100% {
-
-        transform:
-            translateY(-120vh)
-            scale(1.3);
-
+        transform: translateY(-120vh) scale(1.3);
         opacity: 0;
-
     }
-
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .container {
-
     position: relative;
 
     z-index: 5;
@@ -218,605 +152,371 @@ body {
 
     min-height: 100vh;
 
-    padding:
-        50px 20px 120px;
-
+    padding: 50px 20px 120px;
 }
 
 
-/* =========================
-   TITLE
-========================= */
+/* TITLE */
 
 .title {
-
     text-align: center;
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
-    font-size:
-        clamp(45px, 8vw, 85px);
+    font-size: clamp(45px, 8vw, 85px);
 
     font-weight: 900;
 
     color: #ffd5ef;
 
     text-shadow:
-
         0 0 10px #ff69c9,
-
         0 0 25px #ff1493,
-
         0 0 50px #ff1493;
 
-    animation:
-        titleIn 2s ease;
-
+    animation: titleIn 2s ease;
 }
-
 
 @keyframes titleIn {
 
     0% {
-
         opacity: 0;
-
-        transform:
-            scale(0.6);
-
+        transform: scale(0.6);
     }
 
     100% {
-
         opacity: 1;
-
-        transform:
-            scale(1);
-
+        transform: scale(1);
     }
-
 }
 
 
-/* =========================
-   SUBTITLE
-========================= */
+/* SUBTITLE */
 
 .subtitle {
-
     text-align: center;
 
-    margin:
-        15px auto 50px;
+    margin: 15px auto 50px;
 
     max-width: 700px;
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
-    font-size:
-        clamp(18px, 3vw, 25px);
+    font-size: clamp(18px, 3vw, 25px);
 
     color: #ffb5e8;
 
     font-style: italic;
-
 }
 
 
-/* =========================
-   LETTER
-========================= */
+/* LETTER */
 
 .letter {
+    width: min(850px, 94vw);
 
-    width:
-        min(850px, 94vw);
+    margin: auto;
 
-    margin:
-        auto;
+    padding: clamp(30px, 6vw, 65px);
 
-    padding:
-        clamp(30px, 6vw, 65px);
+    border-radius: 25px;
 
-    border-radius:
-        25px;
+    background: rgba(255,255,255,0.07);
 
-    background:
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255,160,220,0.45);
 
-    border:
-        1px solid
-        rgba(255, 160, 220, 0.45);
-
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
 
     box-shadow:
+        0 0 25px rgba(255,20,147,0.25),
+        0 0 70px rgba(255,20,147,0.12);
 
-        0 0 25px
-        rgba(255, 20, 147, 0.25),
+    transform-origin: center top;
 
-        0 0 70px
-        rgba(255, 20, 147, 0.12);
-
-    transform-origin:
-        center top;
-
-    animation:
-        letterZoom 10s ease-in-out infinite alternate;
-
+    animation: letterZoom 10s ease-in-out infinite alternate;
 }
-
 
 @keyframes letterZoom {
 
     0% {
-
-        transform:
-            scale(0.98);
-
+        transform: scale(0.98);
     }
 
     100% {
-
-        transform:
-            scale(1.015);
-
+        transform: scale(1.015);
     }
-
 }
 
 
-/* =========================
-   LETTER CONTENT
-========================= */
+/* LETTER TEXT */
 
 .letter-content {
+    font-size: clamp(18px, 3vw, 25px);
 
-    font-size:
-        clamp(18px, 3vw, 25px);
+    line-height: 2;
 
-    line-height:
-        2;
-
-    color:
-        #fff3fb;
-
+    color: #fff3fb;
 }
-
 
 .line {
+    min-height: 1.8em;
 
-    min-height:
-        1.8em;
-
-    margin-bottom:
-        25px;
-
+    margin-bottom: 25px;
 }
 
 
-/* =========================
-   TYPING CURSOR
-========================= */
+/* CURSOR */
 
 .cursor {
+    display: inline-block;
 
-    display:
-        inline-block;
+    width: 3px;
+    height: 1em;
 
-    width:
-        3px;
+    margin-left: 3px;
 
-    height:
-        1em;
+    background: #ff69c9;
 
-    margin-left:
-        3px;
+    vertical-align: middle;
 
-    background:
-        #ff69c9;
-
-    vertical-align:
-        middle;
-
-    animation:
-        blink 0.7s infinite;
-
+    animation: blink 0.7s infinite;
 }
-
 
 @keyframes blink {
 
     50% {
-
         opacity: 0;
-
     }
-
 }
 
 
-/* =========================
-   SIGNATURE
-========================= */
+/* SIGNATURE */
 
 .signature {
+    margin-top: 45px;
 
-    margin-top:
-        45px;
+    text-align: right;
 
-    text-align:
-        right;
+    font-size: clamp(22px, 4vw, 34px);
 
-    font-size:
-        clamp(22px, 4vw, 34px);
+    color: #ffb5e8;
 
-    color:
-        #ffb5e8;
+    opacity: 0;
 
-    opacity:
-        0;
-
-    transition:
-        opacity 2s ease;
-
+    transition: opacity 2s ease;
 }
-
 
 .signature.show {
-
-    opacity:
-        1;
-
+    opacity: 1;
 }
 
 
-/* =========================
-   FINAL MESSAGE
-========================= */
+/* FINAL MESSAGE */
 
 .final-message {
+    margin: 100px auto 0;
 
-    margin:
-        100px auto 0;
+    text-align: center;
 
-    text-align:
-        center;
+    font-family: Arial, sans-serif;
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-size: clamp(28px, 6vw, 55px);
 
-    font-size:
-        clamp(28px, 6vw, 55px);
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    color:
-        #ffd5ef;
+    color: #ffd5ef;
 
     text-shadow:
-
         0 0 10px #ff69c9,
-
         0 0 30px #ff1493,
-
         0 0 60px #ff1493;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    transform:
-        scale(0.8);
+    transform: scale(0.8);
 
-    transition:
-        all 2s ease;
-
+    transition: all 2s ease;
 }
-
 
 .final-message.show {
+    opacity: 1;
 
-    opacity:
-        1;
-
-    transform:
-        scale(1);
-
+    transform: scale(1);
 }
 
 
-/* =========================
-   BACK BUTTON
-========================= */
+/* BACK BUTTON */
 
 .back {
+    display: block;
 
-    display:
-        block;
+    width: fit-content;
 
-    width:
-        fit-content;
+    margin: 60px auto 0;
 
-    margin:
-        60px auto 0;
+    padding: 13px 30px;
 
-    padding:
-        13px 30px;
+    border-radius: 40px;
 
-    border-radius:
-        40px;
+    text-decoration: none;
 
-    text-decoration:
-        none;
+    color: white;
 
-    color:
-        white;
+    font-family: Arial, sans-serif;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-weight: bold;
 
-    font-weight:
-        bold;
+    background: rgba(255,50,170,0.18);
 
-    background:
-        rgba(255, 50, 170, 0.18);
-
-    border:
-        1px solid #ff65c7;
+    border: 1px solid #ff65c7;
 
     box-shadow:
-        0 0 12px
-        rgba(255, 20, 147, 0.5);
+        0 0 12px rgba(255,20,147,0.5);
 
-    transition:
-        0.3s ease;
-
+    transition: 0.3s ease;
 }
-
 
 .back:hover {
+    background: #ff299f;
 
-    background:
-        #ff299f;
-
-    transform:
-        scale(1.07);
+    transform: scale(1.07);
 
     box-shadow:
-
         0 0 20px #ff1493,
-
         0 0 40px #ff1493;
-
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
     .container {
-
-        padding:
-            30px 12px 100px;
-
+        padding: 30px 12px 100px;
     }
 
     .title {
-
-        font-size:
-            43px;
-
+        font-size: 43px;
     }
 
     .subtitle {
+        font-size: 18px;
 
-        font-size:
-            18px;
-
-        margin-bottom:
-            30px;
-
+        margin-bottom: 30px;
     }
 
     .letter {
+        padding: 28px 20px;
 
-        padding:
-            28px 20px;
-
-        border-radius:
-            20px;
-
+        border-radius: 20px;
     }
 
     .letter-content {
+        font-size: 18px;
 
-        font-size:
-            18px;
-
-        line-height:
-            1.9;
-
+        line-height: 1.9;
     }
 
     .line {
-
-        margin-bottom:
-            22px;
-
+        margin-bottom: 22px;
     }
 
     .signature {
+        text-align: center;
 
-        text-align:
-            center;
-
-        font-size:
-            24px;
-
+        font-size: 24px;
     }
 
-}
-
-
-/* =========================
-   NO SELECTION
-========================= */
-
-body {
-
-    -webkit-user-select:
-        none;
-
-    user-select:
-        none;
-
+    .background-text span {
+        font-size: 20px;
+    }
 }
 
 </style>
 
 </head>
 
-
 <body>
 
 
-<!-- =========================
-     BACKGROUND TEXT
-========================= -->
+<!-- BACKGROUND TEXT -->
 
 <div class="background-text">
 
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
-
     <span>Thank You ❤️</span>
 
 </div>
 
-
-<!-- GLOW -->
 
 <div class="glow"></div>
 
 
-<!-- =========================
-     HEARTS
-========================= -->
+<!-- FLOATING HEARTS -->
 
-<div
-    class="heart"
-    style="left:8%; animation-delay:0s;">
-    ♥
-</div>
-
-<div
-    class="heart"
-    style="left:22%; animation-delay:2s;">
-    ♥
-</div>
-
-<div
-    class="heart"
-    style="left:40%; animation-delay:4s;">
-    ♥
-</div>
-
-<div
-    class="heart"
-    style="left:62%; animation-delay:1s;">
-    ♥
-</div>
-
-<div
-    class="heart"
-    style="left:82%; animation-delay:3s;">
-    ♥
-</div>
+<div class="heart" style="left:8%; animation-delay:0s;">♥</div>
+<div class="heart" style="left:22%; animation-delay:2s;">♥</div>
+<div class="heart" style="left:40%; animation-delay:4s;">♥</div>
+<div class="heart" style="left:62%; animation-delay:1s;">♥</div>
+<div class="heart" style="left:82%; animation-delay:3s;">♥</div>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- MAIN -->
 
 <div class="container">
 
-
     <h1 class="title">
-
         Thank You ❤️
-
     </h1>
 
-
     <div class="subtitle">
-
-        A little letter from my heart to yours...
-
+        A few words that I wanted to say...
     </div>
 
 
-    <!-- =========================
-         LETTER
-    ========================= -->
+    <!-- LETTER -->
 
     <div class="letter">
-
 
         <div
             class="letter-content"
             id="letterContent">
+        </div>
 
+
+        <div
+            class="signature"
+            id="signature">
+
+            Always keep smiling ❤️
+
+        </div>
 
     </div>
 
 
-    <!-- =========================
-         FINAL MESSAGE
-    ========================= -->
+    <!-- FINAL -->
 
     <div
         class="final-message"
         id="finalMessage">
 
-        Thank you for being you. ❤️
+        Thank You For Everything ❤️
 
         <br>
 
-        Happy Birthday! 🎂✨
+        Happy Birthday 🎂✨
 
     </div>
 
-
-    <!-- BACK -->
 
     <a
         href="menu.html"
@@ -826,102 +526,87 @@ body {
 
     </a>
 
-
 </div>
 
 
 <script>
 
-/* =====================================================
-   YOUR LETTER
-===================================================== */
+/* =========================================
+   THANK YOU LETTER
+========================================= */
 
 const letterLines = [
 
-    "Dear T-O-M-A-T-O, 😝",
+    "Thank you. ❤️",
 
-    "I just wanted to take a moment to say thank you.",
+    "Thank you for every smile, every laugh, and every little moment that became a beautiful memory.",
 
-    "Thank you for all the little moments that somehow became the memories I never want to forget.",
+    "Thank you for all the conversations, the fun moments, and even the random little things that made the days more special.",
 
-    "Thank you for the smiles, the laughter, the conversations, and even the moments that were completely unexpected.",
+    "There are so many memories that are impossible to forget.",
 
-    "Sometimes we don't realize how special a moment is until we look back at it.",
+    "Some moments were funny, some were unexpected, and some were simply special.",
 
-    "And when I look back, I realize just how many beautiful moments there are to remember.",
+    "But every single one of them is something worth remembering.",
 
-    "Your smile has a way of making ordinary moments feel special.",
+    "I hope you always remember the good times and the little things that made you smile.",
 
-    "Your presence can turn a normal day into something worth remembering.",
+    "I hope you keep making amazing memories wherever life takes you.",
 
-    "I hope this little website reminds you of just how many beautiful memories there are.",
+    "I hope you get everything you wish for and achieve everything you work for.",
 
-    "I hope it makes you smile.",
+    "You deserve plenty of happiness, countless smiles, and many beautiful moments ahead.",
 
-    "I hope it makes you laugh.",
+    "So today, on your birthday, I just want to say thank you for all the memories.",
 
-    "And most importantly, I hope it reminds you that you are truly special. ❤️",
+    "Thank you for being someone who made so many moments worth remembering.",
 
-    "On your birthday, I wish you happiness that never runs out, dreams that slowly become reality, and countless moments that make your heart smile.",
+    "Thank you for all the smiles.",
 
-    "May the future bring you everything you deserve.",
+    "Thank you for all the laughs.",
 
-    "Keep smiling, keep dreaming, and keep being the wonderful person you are.",
+    "Thank you for all the memories.",
 
-    "Thank you for being a beautiful part of these memories.",
-
-    "And thank you for simply being you. ❤️"
+    "And most importantly, thank you for being you. ❤️"
 
 ];
 
 
-/* =====================================================
+/* =========================================
    SETTINGS
-===================================================== */
+========================================= */
 
 const typingSpeed = 35;
 
 const lineDelay = 700;
 
 
-/* =====================================================
+/* =========================================
    ELEMENTS
-===================================================== */
+========================================= */
 
 const letterContent =
-    document.getElementById(
-        "letterContent"
-    );
+    document.getElementById("letterContent");
 
 const signature =
-    document.getElementById(
-        "signature"
-    );
+    document.getElementById("signature");
 
 const finalMessage =
-    document.getElementById(
-        "finalMessage"
-    );
+    document.getElementById("finalMessage");
 
 
-/* =====================================================
-   TYPE ONE LINE
-===================================================== */
+/* =========================================
+   TYPING
+========================================= */
 
-function typeLine(
-    text,
-    callback
-) {
+function typeLine(text, callback) {
 
     const line =
         document.createElement("div");
 
-    line.className =
-        "line";
+    line.className = "line";
 
-    letterContent.appendChild(
-        line
-    );
+    letterContent.appendChild(line);
 
 
     let index = 0;
@@ -930,18 +615,13 @@ function typeLine(
     const cursor =
         document.createElement("span");
 
-    cursor.className =
-        "cursor";
+    cursor.className = "cursor";
 
-
-    line.appendChild(
-        cursor
-    );
+    line.appendChild(cursor);
 
 
     const typing =
         setInterval(() => {
-
 
             if (index < text.length) {
 
@@ -953,13 +633,9 @@ function typeLine(
 
                 index++;
 
-            }
+            } else {
 
-            else {
-
-                clearInterval(
-                    typing
-                );
+                clearInterval(typing);
 
                 cursor.remove();
 
@@ -967,7 +643,6 @@ function typeLine(
                     callback,
                     lineDelay
                 );
-
             }
 
         }, typingSpeed);
@@ -975,19 +650,16 @@ function typeLine(
 }
 
 
-/* =====================================================
+/* =========================================
    TYPE ALL LINES
-===================================================== */
+========================================= */
 
 let currentLine = 0;
 
 
 function typeNextLine() {
 
-    if (
-        currentLine <
-        letterLines.length
-    ) {
+    if (currentLine < letterLines.length) {
 
         typeLine(
             letterLines[currentLine],
@@ -1000,22 +672,13 @@ function typeNextLine() {
             }
         );
 
-    }
+    } else {
 
-    else {
-
-        /* LETTER FINISHED */
-
-        signature.classList.add(
-            "show"
-        );
-
+        signature.classList.add("show");
 
         setTimeout(() => {
 
-            finalMessage.classList.add(
-                "show"
-            );
+            finalMessage.classList.add("show");
 
         }, 1500);
 
@@ -1024,9 +687,9 @@ function typeNextLine() {
 }
 
 
-/* =====================================================
-   AUTOMATIC SLOW SCROLL
-===================================================== */
+/* =========================================
+   AUTO SCROLL
+========================================= */
 
 let scrolling = false;
 
@@ -1035,7 +698,7 @@ function startAutoScroll() {
 
     scrolling = true;
 
-    const scrollSpeed = 0.45;
+    const scrollSpeed = 0.35;
 
 
     function scrollPage() {
@@ -1063,9 +726,9 @@ function startAutoScroll() {
 }
 
 
-/* =====================================================
+/* =========================================
    START
-===================================================== */
+========================================= */
 
 setTimeout(() => {
 
@@ -1073,24 +736,19 @@ setTimeout(() => {
 
     setTimeout(
         startAutoScroll,
-        2500
+        3000
     );
 
 }, 1200);
 
 
-/* =====================================================
-   STOP AUTO SCROLL IF USER TOUCHES PAGE
-===================================================== */
-
-let userInteracted = false;
-
+/* =========================================
+   STOP WHEN USER SCROLLS
+========================================= */
 
 window.addEventListener(
     "touchstart",
     () => {
-
-        userInteracted = true;
 
         scrolling = false;
 
@@ -1102,8 +760,6 @@ window.addEventListener(
 window.addEventListener(
     "wheel",
     () => {
-
-        userInteracted = true;
 
         scrolling = false;
 
@@ -1117,4 +773,3 @@ window.addEventListener(
 </body>
 
 </html>
-
