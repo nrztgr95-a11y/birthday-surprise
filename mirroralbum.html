@@ -1,272 +1,662 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🪞 Mirror Pic Album</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Mirror Pictures ❤️</title>
+
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
 
-background:linear-gradient(135deg,#ff9ec4,#ffd6e7,#cdb4db,#bde0fe);
-min-height:100vh;
-overflow-x:hidden;
-
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-.container{
 
-width:90%;
-max-width:1300px;
-margin:auto;
-padding:40px;
+body {
 
-}
+    min-height: 100vh;
 
-h1{
+    overflow-x: hidden;
 
-text-align:center;
-font-size:50px;
-color:white;
-margin-bottom:10px;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-}
+    color: white;
 
-.subtitle{
-
-text-align:center;
-font-size:22px;
-color:white;
-margin-bottom:40px;
-
-}
-
-.gallery{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+    background:
+        radial-gradient(
+            circle at center,
+            #54103f 0%,
+            #21001c 45%,
+            #050005 100%
+        );
 
 }
 
-.photo{
 
-background:white;
-padding:10px;
-border-radius:20px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+/* =========================
+   BACKGROUND TEXT
+========================= */
 
-}
+.background-text {
 
-.photo:hover{
+    position: fixed;
 
-transform:translateY(-8px) scale(1.04);
+    inset: -100px;
 
-}
+    display: flex;
 
-.photo img{
+    flex-wrap: wrap;
 
-width:100%;
-height:320px;
-object-fit:cover;
-border-radius:15px;
+    justify-content: center;
 
-}
+    align-content: center;
 
-.popup{
+    gap: 30px 45px;
 
-display:none;
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.95);
-justify-content:center;
-align-items:center;
-z-index:9999;
+    transform:
+        rotate(-10deg)
+        scale(1.2);
+
+    opacity: 0.08;
+
+    pointer-events: none;
+
+    z-index: 0;
 
 }
 
-.popup img{
 
-max-width:90%;
-max-height:90%;
-border-radius:15px;
+.background-text span {
 
-}
+    color: #ff69c9;
 
-.close{
+    font-size: 28px;
 
-position:absolute;
-top:20px;
-right:40px;
-font-size:60px;
-color:white;
-cursor:pointer;
+    font-weight: bold;
+
+    white-space: nowrap;
 
 }
 
-.back{
 
-display:block;
-width:250px;
-margin:45px auto;
-padding:16px;
-text-align:center;
-text-decoration:none;
-background:white;
-color:#ff2d75;
-font-size:22px;
-font-weight:bold;
-border-radius:50px;
-transition:.3s;
+/* =========================
+   GLOW
+========================= */
 
-}
+.glow {
 
-.back:hover{
+    position: fixed;
 
-background:#ffe4ef;
-transform:scale(1.05);
+    width: 600px;
 
-}
+    height: 600px;
 
-.heart{
+    left: 50%;
 
-position:fixed;
-bottom:-40px;
-pointer-events:none;
-animation:floatUp linear forwards;
+    top: 50%;
 
-}
+    transform:
+        translate(-50%, -50%);
 
-@keyframes floatUp{
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 60, 180, 0.25),
+            transparent 70%
+        );
 
-0%{
-transform:translateY(0);
-opacity:1;
-}
+    filter: blur(40px);
 
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
+    pointer-events: none;
 
-}
-  /* ==========================
-   MOBILE OPTIMIZATION
-========================== */
-
-@media (max-width: 768px){
-
-body{
-padding:20px 12px;
-}
-
-.card{
-width:100%;
-padding:25px 18px;
-border-radius:20px;
-}
-
-#intro h1{
-font-size:42px;
-text-align:center;
-}
-
-#intro p{
-font-size:18px;
-text-align:center;
-padding:0 15px;
-}
-
-.heading,
-.title{
-font-size:42px;
-line-height:1.2;
-text-align:center;
-}
-
-#letter{
-font-size:18px;
-line-height:1.9;
-min-height:auto;
-}
-
-#ending h1{
-font-size:48px;
-}
-
-#ending h2{
-font-size:28px;
-}
-
-#ending p{
-font-size:18px;
-line-height:1.8;
-}
-
-button{
-width:100%;
-font-size:18px;
-padding:16px;
-margin-top:40px;
-}
-
-img{
-max-width:100%;
-height:auto;
-border-radius:15px;
-}
-
-video{
-width:100%;
-border-radius:15px;
-}
+    z-index: 0;
 
 }
 
-/* Small phones */
 
-@media (max-width:480px){
+/* =========================
+   FLOATING HEARTS
+========================= */
 
-#intro h1{
-font-size:34px;
+.heart {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    color: #ff4db8;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493;
+
+    animation:
+        floatHeart 8s linear infinite;
+
 }
 
-.heading,
-.title{
-font-size:34px;
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: 0.8;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-120vh)
+            scale(1.3);
+
+        opacity: 0;
+
+    }
+
 }
 
-#letter{
-font-size:16px;
-line-height:1.8;
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 100vh;
+
+    padding:
+        45px 20px 60px;
+
+    text-align: center;
+
 }
 
-#ending h1{
-font-size:40px;
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+
+    font-size:
+        clamp(38px, 8vw, 80px);
+
+    font-weight: 900;
+
+    color: #ffd5ef;
+
+    text-shadow:
+
+        0 0 10px #ff69c9,
+
+        0 0 25px #ff1493,
+
+        0 0 50px #ff1493;
+
+    animation:
+        titleIn 2s ease;
+
 }
 
-#ending h2{
-font-size:24px;
+
+@keyframes titleIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.6)
+            translateY(-30px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
 }
 
-#ending p{
-font-size:16px;
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle {
+
+    margin:
+        15px auto 40px;
+
+    max-width: 700px;
+
+    font-size:
+        clamp(18px, 3vw, 26px);
+
+    color: #ffb5e8;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 10px #ff1493;
+
+    animation:
+        fadeIn 3s ease;
+
 }
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery {
+
+    width:
+        min(900px, 94vw);
+
+    min-height: 60vh;
+
+    margin:
+        auto;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo {
+
+    display: none;
+
+    width: 100%;
+
+    animation:
+        photoAppear 2s ease;
+
+}
+
+
+.photo.active {
+
+    display: block;
+
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.photo img {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    margin: auto;
+
+    border-radius: 22px;
+
+    border:
+        3px solid
+        rgba(255, 160, 220, 0.7);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255, 20, 147, 0.6),
+
+        0 0 60px
+        rgba(255, 20, 147, 0.3);
+
+    animation:
+        slowZoom 6s ease-in-out forwards;
+
+}
+
+
+/* =========================
+   PHOTO ANIMATION
+========================= */
+
+@keyframes photoAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.80)
+            translateY(25px);
+
+        filter:
+            blur(12px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+@keyframes slowZoom {
+
+    0% {
+
+        transform:
+            scale(0.96);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1.04);
+
+    }
+
+}
+
+
+/* =========================
+   NUMBER
+========================= */
+
+.number {
+
+    margin-top: 15px;
+
+    color: #ff9edc;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 10px #ff1493;
+
+}
+
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-message {
+
+    display: none;
+
+    margin:
+        30px auto;
+
+    max-width: 750px;
+
+    font-size:
+        clamp(22px, 4vw, 35px);
+
+    line-height: 1.6;
+
+    color: #ffd1ef;
+
+    text-shadow:
+
+        0 0 10px #ff1493,
+
+        0 0 25px #ff1493;
+
+    animation:
+        finalIn 2s ease;
+
+}
+
+
+@keyframes finalIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.7);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding:
+        13px 30px;
+
+    border-radius: 40px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: bold;
+
+    background:
+        rgba(255, 50, 170, 0.18);
+
+    border:
+        1px solid #ff65c7;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 20, 147, 0.5);
+
+    transition:
+        0.3s ease;
+
+}
+
+
+.back:hover {
+
+    background:
+        #ff299f;
+
+    transform:
+        scale(1.07);
+
+    box-shadow:
+
+        0 0 20px #ff1493,
+
+        0 0 40px #ff1493;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding:
+            30px 12px 50px;
+
+    }
+
+    .title {
+
+        font-size:
+            40px;
+
+    }
+
+    .subtitle {
+
+        font-size:
+            18px;
+
+        margin-bottom:
+            25px;
+
+    }
+
+    .gallery {
+
+        min-height:
+            55vh;
+
+    }
+
+    .photo img {
+
+        width: 100%;
+
+        max-height:
+            60vh;
+
+        border-radius:
+            15px;
+
+    }
+
+    .number {
+
+        font-size:
+            16px;
+
+    }
+
+    .back {
+
+        padding:
+            11px 24px;
+
+    }
+
+    .background-text span {
+
+        font-size:
+            20px;
+
+    }
+
+}
+
+
+/* =========================
+   FADE
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
 
 }
 
@@ -274,103 +664,297 @@ font-size:16px;
 
 </head>
 
+
 <body>
 
-<div class="container">
 
-<h1>🪞 Mirror Pic Album 💖</h1>
-
-<p class="subtitle">
-Every mirror picture reminds me of another beautiful moment. ❤️
-</p>
-
-<div class="gallery">
-
-<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/748330288_1533851138287015_7962866345262869275_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=TAfGS7nrjL4Q7kNvwFms8i7&_nc_oc=AdrzxX0xSVD-prTtfRRh-TjCRyqSdFHKebrTTPiy4MjFqvrzqGA49BpWDh1IJ4dHFPawRxVpoFDdjDjb4Sy5NjZI&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wFCrkGApIHW9o9Ox6GUJC-_qB0xXwNTwhhx-0U61Mphjw&oe=6A84327D" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/747624983_2076698596215948_5217453072277707410_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=sSu0K3xpPnEQ7kNvwFWYorf&_nc_oc=AdpUbYn5euRMHpdg2fNW40zZUl_3rd_rEHDE1YhgaFn0yFEyP7pB2uz57QNOSKjeTZeKk1CszhC62aYt5gSIQy55&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wETp95J6vrRHfk72MHUnCvaztJkjbnXQ9LH2TuTIaq0Ng&oe=6A8452EF" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/746540405_1030847625992231_8546828410133315763_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=tw3o8_VxvVoQ7kNvwFM_eVM&_nc_oc=Adq_Uz20psWb3y6IvafQsiSHIlCcXqNGSBj-m2gUzx2QFlr0jMQsu5JLtmT1J-v70406SuJmcZGzjMiXEnebz_NR&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wEoj_4drjth7ByFg8qEMh5vJKlZPpYt5luUmHa_ib2DeA&oe=6A844B34" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/750775378_1771355690975103_1971631980834142691_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=SvdfMsp2bywQ7kNvwGKI0-H&_nc_oc=AdpbvK2IWiOVYnJcajOuqTRiHeblt6WiT8DN39IczQrYs7OiVimhO4nnDrDhdxVkbXdmUeSWjT8h4-wKa3kJxGGK&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wHW6gsdWonyM78CJgbgGJrNvheQ2pw2fc2An87Lx46XAg&oe=6A842C64" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/746058102_1001333576137696_7137233730187090092_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=GSlTEmloGPQQ7kNvwGxXNZc&_nc_oc=AdpHF5FYWyIYceVlmRVOTPIbySQk-kw9YXWWA6AcFWQMMctjV2SGwwMS4Maz1f6MwWg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF4Pk6-OZxI_aCLbwuKVbXtPw4Sw317I6G4Id15G7iJvQ&oe=6A806532" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/751864644_1695237728198493_3260772105053795779_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=tzSr9aeJ2J8Q7kNvwG1FWMu&_nc_oc=Adodl28fxzUo2XWlT0phzhbAzoZUWy72xukGtQEh-iQeQBbnJMd0oAEEX4UbCcQqHIREbntimNaPUslsKTsqqEZQ&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wF6638y3ELiSmFQ0_wpukyD2JUZLGJ9WZtzEFY_hcAAtg&oe=6A859684" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/751402844_1159630503911096_8869996915513637542_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=hcCL_h6t0YgQ7kNvwHwAJke&_nc_oc=AdqNmZ3JzAY-YrLjIFKvS3UH1zZ7g0jWSTC7iRiReRWgEq7vXCVR6q9sx9ZHR10ftJI_BdxJ3MH8jyykxxxYuxzO&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wFStDkqyZx2i6bY6GDnt7agh1uMO0Sv7jl22Y6sFUHAAw&oe=6A857EBC" onclick="show(this.src)"></div>
-
-<div class="photo"><img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/751257476_914754954253369_1038856580080968571_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=lS5Qs07hv4oQ7kNvwEuo8rX&_nc_oc=AdoW-EOWuxpf6OtGdtiCan2qXt5VfEGfGufuUvFKPCDz9Fgf3v6RFUbP-diRa4vxmYEz64eWDivNFfGEB8WmOheA&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wEdbPERuhQSO6e45q52EXL_FH8K01dOVJEW_jOFLUXVDw&oe=6A85764B" onclick="show(this.src)"></div>
-
-</div>
-
-<a href="menu.html" class="back">
-🏠 Back to Menu
-</a>
-
-</div>
-
-<div class="popup" id="popup">
-
-<span class="close" onclick="hide()">&times;</span>
-
-<img id="popupImage">
-
-</div>
+<!-- =====================================================
+     IMAGE ADDRESSES
+     
+     PUT YOUR 8 MIRROR PICTURES HERE
+====================================================== -->
 
 <script>
 
-function show(src){
+const imageAddresses = [
 
-document.getElementById("popup").style.display="flex";
+    "https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/748330288_1533851138287015_7962866345262869275_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=TAfGS7nrjL4Q7kNvwFms8i7&_nc_oc=AdrzxX0xSVD-prTtfRRh-TjCRyqSdFHKebrTTPiy4MjFqvrzqGA49BpWDh1IJ4dHFPawRxVpoFDdjDjb4Sy5NjZI&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wFCrkGApIHW9o9Ox6GUJC-_qB0xXwNTwhhx-0U61Mphjw&oe=6A84327D",
 
-document.getElementById("popupImage").src=src;
+    "https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/747624983_2076698596215948_5217453072277707410_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=sSu0K3xpPnEQ7kNvwFWYorf&_nc_oc=AdpUbYn5euRMHpdg2fNW40zZUl_3rd_rEHDE1YhgaFn0yFEyP7pB2uz57QNOSKjeTZeKk1CszhC62aYt5gSIQy55&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wETp95J6vrRHfk72MHUnCvaztJkjbnXQ9LH2TuTIaq0Ng&oe=6A8452EF",
 
-}
+    "https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/746540405_1030847625992231_8546828410133315763_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=tw3o8_VxvVoQ7kNvwFM_eVM&_nc_oc=Adq_Uz20psWb3y6IvafQsiSHIlCcXqNGSBj-m2gUzx2QFlr0jMQsu5JLtmT1J-v70406SuJmcZGzjMiXEnebz_NR&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wEoj_4drjth7ByFg8qEMh5vJKlZPpYt5luUmHa_ib2DeA&oe=6A844B34",
 
-function hide(){
+    "https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/750775378_1771355690975103_1971631980834142691_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=SvdfMsp2bywQ7kNvwGKI0-H&_nc_oc=AdpbvK2IWiOVYnJcajOuqTRiHeblt6WiT8DN39IczQrYs7OiVimhO4nnDrDhdxVkbXdmUeSWjT8h4-wKa3kJxGGK&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wHW6gsdWonyM78CJgbgGJrNvheQ2pw2fc2An87Lx46XAg&oe=6A842C64",
 
-document.getElementById("popup").style.display="none";
+    "https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/746058102_1001333576137696_7137233730187090092_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=GSlTEmloGPQQ7kNvwGxXNZc&_nc_oc=AdpHF5FYWyIYceVlmRVOTPIbySQk-kw9YXWWA6AcFWQMMctjV2SGwwMS4Maz1f6MwWg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF4Pk6-OZxI_aCLbwuKVbXtPw4Sw317I6G4Id15G7iJvQ&oe=6A806532",
 
-}
+    "https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/751864644_1695237728198493_3260772105053795779_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=tzSr9aeJ2J8Q7kNvwG1FWMu&_nc_oc=Adodl28fxzUo2XWlT0phzhbAzoZUWy72xukGtQEh-iQeQBbnJMd0oAEEX4UbCcQqHIREbntimNaPUslsKTsqqEZQ&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wF6638y3ELiSmFQ0_wpukyD2JUZLGJ9WZtzEFY_hcAAtg&oe=6A859684",
 
-document.addEventListener("keydown",function(e){
+    "https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/751402844_1159630503911096_8869996915513637542_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=hcCL_h6t0YgQ7kNvwHwAJke&_nc_oc=AdqNmZ3JzAY-YrLjIFKvS3UH1zZ7g0jWSTC7iRiReRWgEq7vXCVR6q9sx9ZHR10ftJI_BdxJ3MH8jyykxxxYuxzO&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wFStDkqyZx2i6bY6GDnt7agh1uMO0Sv7jl22Y6sFUHAAw&oe=6A857EBC",
 
-if(e.key==="Escape"){
+    "https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/751257476_914754954253369_1038856580080968571_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=lS5Qs07hv4oQ7kNvwEuo8rX&_nc_oc=AdoW-EOWuxpf6OtGdtiCan2qXt5VfEGfGufuUvFKPCDz9Fgf3v6RFUbP-diRa4vxmYEz64eWDivNFfGEB8WmOheA&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a6a8&oh=03_Q7cD5wEdbPERuhQSO6e45q52EXL_FH8K01dOVJEW_jOFLUXVDw&oe=6A85764B"
 
-hide();
-
-}
-
-});
-
-setInterval(function(){
-
-const h=document.createElement("div");
-
-h.className="heart";
-
-const emojis=["💖","💕","❤️","🌸","🌹","✨"];
-
-h.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-
-h.style.left=Math.random()*100+"vw";
-
-h.style.fontSize=(20+Math.random()*30)+"px";
-
-h.style.animationDuration=(4+Math.random()*5)+"s";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{
-
-h.remove();
-
-},9000);
-
-},300);
+];
 
 </script>
 
+
+<!-- =========================
+     BACKGROUND TEXT
+========================= -->
+
+<div class="background-text">
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+    <span>Happy Birthday to You ❤️</span>
+
+</div>
+
+
+<!-- GLOW -->
+
+<div class="glow"></div>
+
+
+<!-- FLOATING HEARTS -->
+
+<div
+    class="heart"
+    style="left:8%; animation-delay:0s;">
+    ♥
+</div>
+
+<div
+    class="heart"
+    style="left:22%; animation-delay:2s;">
+    ♥
+</div>
+
+<div
+    class="heart"
+    style="left:40%; animation-delay:4s;">
+    ♥
+</div>
+
+<div
+    class="heart"
+    style="left:62%; animation-delay:1s;">
+    ♥
+</div>
+
+<div
+    class="heart"
+    style="left:82%; animation-delay:3s;">
+    ♥
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="container">
+
+
+    <h1 class="title">
+
+        Mirror Pictures 🪞❤️
+
+    </h1>
+
+
+    <div class="subtitle">
+
+        A little collection of beautiful moments ✨
+
+    </div>
+
+
+    <!-- GALLERY -->
+
+    <div
+        class="gallery"
+        id="gallery">
+
+    </div>
+
+
+    <!-- FINAL MESSAGE -->
+
+    <div
+        class="final-message"
+        id="finalMessage">
+
+        Every reflection holds a memory... 🪞❤️
+
+        <br>
+
+        And every memory is worth keeping. ✨
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="menu.html"
+        class="back">
+
+        ← Back to Menu
+
+    </a>
+
+
+</div>
+
+
+<script>
+
+/* =========================
+   CREATE PHOTOS
+========================= */
+
+const gallery =
+    document.getElementById("gallery");
+
+const finalMessage =
+    document.getElementById("finalMessage");
+
+
+imageAddresses.forEach(
+    (address, index) => {
+
+        const photo =
+            document.createElement("div");
+
+        photo.className =
+            "photo";
+
+
+        /* FIRST PHOTO */
+
+        if (index === 0) {
+
+            photo.classList.add(
+                "active"
+            );
+
+        }
+
+
+        photo.innerHTML = `
+
+            <img
+                src="${address}"
+                alt="Mirror Picture ${index + 1}"
+            >
+
+            <div class="number">
+
+                Mirror Picture
+                ${index + 1}
+                /
+                ${imageAddresses.length}
+                ❤️
+
+            </div>
+
+        `;
+
+
+        gallery.appendChild(photo);
+
+    }
+);
+
+
+/* =========================
+   SLIDESHOW
+========================= */
+
+const photos =
+    document.querySelectorAll(".photo");
+
+let current = 0;
+
+
+/*
+    Each mirror picture stays
+    for 6 seconds.
+
+    Then the next picture
+    slowly appears.
+*/
+
+setInterval(() => {
+
+
+    photos[current]
+        .classList
+        .remove("active");
+
+
+    current++;
+
+
+    if (current < photos.length) {
+
+        photos[current]
+            .classList
+            .add("active");
+
+    }
+
+
+    else {
+
+        /* ALL PHOTOS FINISHED */
+
+        finalMessage.style.display =
+            "block";
+
+
+        /* WAIT 4 SECONDS */
+
+        setTimeout(() => {
+
+            finalMessage.style.display =
+                "none";
+
+            current = 0;
+
+            photos[current]
+                .classList
+                .add("active");
+
+        }, 4000);
+
+    }
+
+
+}, 6000);
+
+</script>
+
+
 </body>
+
 </html>
+```
