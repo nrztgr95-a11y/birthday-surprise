@@ -1,294 +1,677 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎂 Happy Birthday 💖</title>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Happy Birthday ❤️</title>
+
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Georgia, serif;
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:linear-gradient(135deg,#fff0f5,#ffe6f2,#fffafc);
-    overflow-x:hidden;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
 
-/* Left Rose */
-.rose{
-    position:fixed;
-    left:25px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:120px;
-    animation:float 4s ease-in-out infinite;
-}
+/* =========================
+   BODY
+========================= */
 
-/* Right Lotus */
-.lotus{
-    position:fixed;
-    right:25px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:120px;
-    animation:float 4s ease-in-out infinite;
-}
+body {
 
-@keyframes float{
+    min-height: 100vh;
 
-0%,100%{
-transform:translateY(-50%);
-}
+    overflow-x: hidden;
 
-50%{
-transform:translateY(-56%);
-}
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #591044 0%,
+            #26001f 40%,
+            #080008 100%
+        );
 
 }
 
-/* Card */
 
-.card{
+/* =========================
+   BACKGROUND TEXT
+========================= */
 
-background:white;
+.background-text {
 
-width:800px;
+    position: fixed;
 
-padding:50px;
+    inset: -100px;
 
-border-radius:30px;
+    display: flex;
 
-box-shadow:0 20px 45px rgba(0,0,0,.18);
+    flex-wrap: wrap;
 
-text-align:center;
+    justify-content: center;
 
-position:relative;
+    align-content: center;
 
-z-index:2;
+    gap: 30px 45px;
 
-}
+    transform:
+        rotate(-10deg)
+        scale(1.2);
 
-h1{
+    opacity: 0.08;
 
-font-size:52px;
+    pointer-events: none;
 
-color:#ff2d75;
-
-margin-bottom:10px;
-
-}
-
-.line{
-
-width:130px;
-
-height:5px;
-
-background:#ff4d88;
-
-margin:20px auto;
-
-border-radius:10px;
+    z-index: 0;
 
 }
 
-.message{
 
-font-size:21px;
+.background-text span {
 
-line-height:2;
+    color: #ff69c9;
 
-color:#555;
+    font-size: 28px;
 
-text-align:justify;
+    font-weight: bold;
 
-margin-top:20px;
-
-}
-
-.message b{
-
-color:#ff2d75;
+    white-space: nowrap;
 
 }
 
-button{
 
-margin-top:40px;
+/* =========================
+   GLOW
+========================= */
 
-padding:15px 35px;
+.glow {
 
-font-size:20px;
+    position: fixed;
 
-background:#ff4d88;
+    width: 600px;
 
-color:white;
+    height: 600px;
 
-border:none;
+    left: 50%;
 
-border-radius:50px;
+    top: 50%;
 
-cursor:pointer;
+    transform:
+        translate(-50%, -50%);
 
-transition:.3s;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 60, 180, 0.25),
+            transparent 70%
+        );
 
-}
+    filter: blur(40px);
 
-button:hover{
+    pointer-events: none;
 
-background:#ff2167;
-
-transform:scale(1.05);
-
-}
-
-/* Floating Hearts */
-
-.heart{
-
-position:fixed;
-
-bottom:-40px;
-
-pointer-events:none;
-
-animation:rise linear forwards;
-
-z-index:1;
+    z-index: 0;
 
 }
 
-@keyframes rise{
 
-0%{
+/* =========================
+   MAIN
+========================= */
 
-transform:translateY(0);
+.container {
 
-opacity:1;
+    position: relative;
 
-}
+    z-index: 5;
 
-100%{
+    min-height: 100vh;
 
-transform:translateY(-120vh);
+    padding:
+        45px 20px 60px;
 
-opacity:0;
-
-}
-
-}
-    /* ==========================
-   MOBILE OPTIMIZATION
-========================== */
-
-@media (max-width: 768px){
-
-body{
-padding:20px 12px;
-}
-
-.card{
-width:100%;
-padding:25px 18px;
-border-radius:20px;
-}
-
-#intro h1{
-font-size:42px;
-text-align:center;
-}
-
-#intro p{
-font-size:18px;
-text-align:center;
-padding:0 15px;
-}
-
-.heading,
-.title{
-font-size:42px;
-line-height:1.2;
-text-align:center;
-}
-
-#letter{
-font-size:18px;
-line-height:1.9;
-min-height:auto;
-}
-
-#ending h1{
-font-size:48px;
-}
-
-#ending h2{
-font-size:28px;
-}
-
-#ending p{
-font-size:18px;
-line-height:1.8;
-}
-
-button{
-width:100%;
-font-size:18px;
-padding:16px;
-margin-top:40px;
-}
-
-img{
-max-width:100%;
-height:auto;
-border-radius:15px;
-}
-
-video{
-width:100%;
-border-radius:15px;
-}
+    text-align: center;
 
 }
 
-/* Small phones */
 
-@media (max-width:480px){
+/* =========================
+   TITLE
+========================= */
 
-#intro h1{
-font-size:34px;
+.title {
+
+    font-size:
+        clamp(42px, 8vw, 85px);
+
+    font-weight: 900;
+
+    color: #ffd5ef;
+
+    text-shadow:
+
+        0 0 10px #ff69c9,
+
+        0 0 25px #ff1493,
+
+        0 0 50px #ff1493,
+
+        0 0 90px #ff1493;
+
+    animation:
+        titleIn 2s ease;
+
 }
 
-.heading,
-.title{
-font-size:34px;
+
+@keyframes titleIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.5)
+            translateY(-30px);
+
+    }
+
+    70% {
+
+        transform:
+            scale(1.08);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
 }
 
-#letter{
-font-size:16px;
-line-height:1.8;
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(20px, 4vw, 32px);
+
+    color: #ff9edc;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 12px #ff1493;
+
+    animation:
+        fadeIn 3s ease;
+
 }
 
-#ending h1{
-font-size:40px;
+
+/* =========================
+   BIRTHDAY CARD
+========================= */
+
+.card {
+
+    width:
+        min(850px, 94vw);
+
+    margin:
+        45px auto 0;
+
+    padding:
+        clamp(25px, 5vw, 55px);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid
+        rgba(255, 150, 220, 0.45);
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(255, 20, 147, 0.25),
+
+        0 0 60px
+        rgba(255, 20, 147, 0.15);
+
+    animation:
+        cardIn 3s ease;
+
 }
 
-#ending h2{
-font-size:24px;
+
+@keyframes cardIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(0.9);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
 
-#ending p{
-font-size:16px;
+
+/* =========================
+   WISH TEXT
+========================= */
+
+.wish {
+
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    line-height: 2;
+
+    color: #fff1fa;
+
+    text-shadow:
+        0 0 7px
+        rgba(255, 100, 200, 0.5);
+
 }
+
+
+.wish p {
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =========================
+   SPECIAL LINE
+========================= */
+
+.special {
+
+    margin-top: 30px;
+
+    font-size:
+        clamp(22px, 4vw, 35px);
+
+    font-weight: bold;
+
+    color: #ffb5e8;
+
+    text-shadow:
+
+        0 0 10px #ff1493,
+
+        0 0 25px #ff1493;
+
+    animation:
+        pulse 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.04);
+
+    }
+
+}
+
+
+/* =========================
+   ROSE
+========================= */
+
+.rose {
+
+    margin-top: 25px;
+
+    font-size:
+        clamp(45px, 8vw, 75px);
+
+    animation:
+        roseFloat 3s ease-in-out infinite;
+
+}
+
+
+@keyframes roseFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    color: #ff4db8;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    text-shadow:
+
+        0 0 10px #ff1493,
+
+        0 0 25px #ff1493;
+
+    animation:
+        floatHeart 8s linear infinite;
+
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: 0.8;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-120vh)
+            scale(1.3);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================
+   SPARKLES
+========================= */
+
+.sparkle {
+
+    position: fixed;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation:
+        sparkle 2s ease-in-out infinite;
+
+}
+
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.3);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.2);
+
+    }
+
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back {
+
+    display: inline-block;
+
+    margin-top: 40px;
+
+    padding:
+        13px 30px;
+
+    border-radius: 40px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    background:
+        rgba(255, 50, 170, 0.18);
+
+    border:
+        1px solid #ff65c7;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 20, 147, 0.5);
+
+    transition:
+        0.3s ease;
+
+}
+
+
+.back:hover {
+
+    background:
+        #ff299f;
+
+    transform:
+        scale(1.07);
+
+    box-shadow:
+
+        0 0 20px #ff1493,
+
+        0 0 40px #ff1493;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding:
+            30px 12px 50px;
+
+    }
+
+    .title {
+
+        font-size:
+            42px;
+
+    }
+
+    .subtitle {
+
+        font-size:
+            19px;
+
+    }
+
+    .card {
+
+        padding:
+            25px 18px;
+
+        border-radius:
+            20px;
+
+    }
+
+    .wish {
+
+        font-size:
+            18px;
+
+        line-height:
+            1.8;
+
+    }
+
+    .special {
+
+        font-size:
+            23px;
+
+    }
+
+    .background-text span {
+
+        font-size:
+            20px;
+
+    }
+
+    .back {
+
+        margin-top:
+            30px;
+
+        padding:
+            11px 24px;
+
+    }
+
+}
+
+
+/* =========================
+   FADE
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
 
 }
 
@@ -296,87 +679,239 @@ font-size:16px;
 
 </head>
 
+
 <body>
 
-<div class="rose">🌹</div>
 
-<div class="lotus">🪷</div>
+<!-- =========================
+     BACKGROUND TEXT
+========================= -->
 
-<div class="card">
+<div class="background-text">
 
-<h1>🎂 Happy Birthday 🎂</h1>
+    <span>Happy Birthday to You ❤️</span>
 
-<div class="line"></div>
+    <span>Happy Birthday to You ❤️</span>
 
-<div class="message">
+    <span>Happy Birthday to You ❤️</span>
 
-Today is a very special day because it marks the day someone truly wonderful came into this world. On your birthday, I just want to wish you endless happiness, good health, success, and countless beautiful moments.
+    <span>Happy Birthday to You ❤️</span>
 
-<br><br>
+    <span>Happy Birthday to You ❤️</span>
 
-May your smile always shine brightly, your dreams come true, and your heart always be filled with love and peace. You deserve all the happiness this world has to offer because you bring so much joy to the people around you.
+    <span>Happy Birthday to You ❤️</span>
 
-<br><br>
+    <span>Happy Birthday to You ❤️</span>
 
-Thank you for being such an amazing person. Your kindness, strength, and beautiful heart make you truly special. Every memory we've shared is something I'll always treasure, and I hope we create many more wonderful memories together.
+    <span>Happy Birthday to You ❤️</span>
 
-<br><br>
+    <span>Happy Birthday to You ❤️</span>
 
-As you begin another year of your life, may every new day bring exciting opportunities, unforgettable adventures, and reasons to smile. Never stop believing in yourself because you are capable of achieving incredible things.
-
-<br><br>
-
-On this special day, I hope you laugh a little louder, smile a little brighter, and celebrate every wonderful moment with the people who care about you. May this birthday become one of the happiest days of your life.
-
-<br><br>
-
-<b>Happy Birthday once again! 🎉🎂</b>
-
-<br><br>
-
-May this year be filled with love ❤️, happiness 🌸, success 🌟, and countless unforgettable memories. No matter what happens, always remember that you are appreciated, cherished, and incredibly special.
-
-<br><br>
-
-Have the most wonderful birthday ever! 💖🎈🎁
+    <span>Happy Birthday to You ❤️</span>
 
 </div>
 
-<button onclick="location.href='menu.html'">
-Next ➜
-</button>
 
-<script>
+<!-- GLOW -->
 
-function createHeart(){
+<div class="glow"></div>
 
-const heart=document.createElement("div");
 
-heart.className="heart";
+<!-- =========================
+     FLOATING HEARTS
+========================= -->
 
-const emojis=["💖","💕","❤️","🌸","✨","💗"];
+<div
+    class="heart"
+    style="left:8%; animation-delay:0s;">
+    ♥
+</div>
 
-heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+<div
+    class="heart"
+    style="left:22%; animation-delay:2s;">
+    ♥
+</div>
 
-heart.style.left=Math.random()*100+"vw";
+<div
+    class="heart"
+    style="left:40%; animation-delay:4s;">
+    ♥
+</div>
 
-heart.style.fontSize=(20+Math.random()*30)+"px";
+<div
+    class="heart"
+    style="left:62%; animation-delay:1s;">
+    ♥
+</div>
 
-heart.style.animationDuration=(4+Math.random()*4)+"s";
+<div
+    class="heart"
+    style="left:82%; animation-delay:3s;">
+    ♥
+</div>
 
-document.body.appendChild(heart);
 
-setTimeout(()=>{
+<!-- =========================
+     SPARKLES
+========================= -->
 
-heart.remove();
+<div
+    class="sparkle"
+    style="left:15%; top:25%; animation-delay:0s;">
+    ✨
+</div>
 
-},8000);
+<div
+    class="sparkle"
+    style="left:80%; top:30%; animation-delay:1s;">
+    ✨
+</div>
 
-}
+<div
+    class="sparkle"
+    style="left:25%; top:70%; animation-delay:2s;">
+    ✨
+</div>
 
-setInterval(createHeart,300);
+<div
+    class="sparkle"
+    style="left:75%; top:70%; animation-delay:0.5s;">
+    ✨
+</div>
 
-</script>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<div class="container">
+
+
+    <h1 class="title">
+
+        Happy Birthday 🎂❤️
+
+    </h1>
+
+
+    <div class="subtitle">
+
+        To someone who makes every moment a little brighter ✨
+
+    </div>
+
+
+    <!-- =========================
+         BIRTHDAY CARD
+    ========================= -->
+
+    <div class="card">
+
+
+        <div class="rose">
+
+            🌹
+
+        </div>
+
+
+        <div class="wish">
+
+            <p>
+
+                Today is not just another day...
+
+            </p>
+
+
+            <p>
+
+                Today is the day the world became
+                a little more beautiful because
+                you were born. ❤️
+
+            </p>
+
+
+            <p>
+
+                I hope this birthday brings you
+                everything your heart wishes for —
+                happiness, laughter, beautiful
+                memories and countless reasons
+                to smile.
+
+            </p>
+
+
+            <p>
+
+                May every new day bring you
+                closer to your dreams.
+
+                May you always have people around
+                you who make you feel loved,
+                appreciated and special.
+
+            </p>
+
+
+            <p>
+
+                And whenever life gets difficult,
+                I hope you remember all the
+                beautiful moments that made you
+                smile.
+
+            </p>
+
+
+            <p>
+
+                Keep smiling.
+
+                Keep shining.
+
+                Keep being the amazing person
+                that you are. ✨
+
+            </p>
+
+
+            <p class="special">
+
+                Happy Birthday to You! 🎂💖
+
+                <br>
+
+                May your smile never fade. ❤️
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         BACK
+    ========================= -->
+
+    <a
+        href="menu.html"
+        class="back">
+
+        ← Back to Menu
+
+    </a>
+
+
+</div>
+
 
 </body>
+
 </html>
+
