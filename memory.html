@@ -1,424 +1,753 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📸 Childhood Memories</title>
+
+<title>Your Memories ❤️</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-background:linear-gradient(135deg,#ffb6c1,#ffe4ec,#fff6fb);
-overflow-x:hidden;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-.container{
-max-width:1300px;
-margin:auto;
-padding:40px 20px;
+body {
+    background:
+        radial-gradient(circle at center, #4b123c 0%, #190019 45%, #050005 100%);
+
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    overflow-x: hidden;
 }
 
-.header{
-background:white;
-padding:40px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-margin-bottom:40px;
+/* BACKGROUND GLOW */
+
+.glow {
+    position: fixed;
+
+    width: 550px;
+    height: 550px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 50, 180, 0.25),
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: 0;
 }
 
-.header h1{
-font-size:55px;
-color:#ff2d75;
+/* BACKGROUND HAPPY BIRTHDAY TEXT */
+
+.background-text {
+    position: fixed;
+
+    inset: -100px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-content: center;
+
+    gap: 30px;
+
+    transform: rotate(-10deg) scale(1.2);
+
+    opacity: 0.08;
+
+    pointer-events: none;
+
+    z-index: 0;
 }
 
-.header p{
-margin-top:15px;
-font-size:20px;
-color:#666;
-line-height:1.6;
+.background-text span {
+    font-size: 28px;
+    font-weight: bold;
+
+    color: #ff69c9;
+
+    white-space: nowrap;
 }
 
-.gallery-title{
-font-size:38px;
-color:#ff2d75;
-margin-bottom:20px;
-text-align:center;
+/* FLOATING HEARTS */
+
+.heart {
+    position: fixed;
+
+    bottom: -50px;
+
+    color: #ff4db8;
+
+    font-size: 25px;
+
+    opacity: 0.7;
+
+    animation: floatHeart 8s linear infinite;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493;
 }
 
-.gallery{
+@keyframes floatHeart {
 
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+    0% {
+        transform:
+            translateY(0)
+            scale(0.5)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            scale(1.3)
+            rotate(30deg);
+
+        opacity: 0;
+    }
+}
+
+/* MAIN */
+
+.container {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        45px
+        20px
+        60px;
+
+    text-align: center;
+}
+
+/* TITLE */
+
+.title {
+    font-size: clamp(38px, 7vw, 75px);
+
+    font-weight: 900;
+
+    color: #ffd1ef;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #ff69c9,
+        0 0 25px #ff1493,
+        0 0 50px #ff1493;
+
+    animation: titleAnimation 2s ease;
+}
+
+@keyframes titleAnimation {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MESSAGE */
+
+.message {
+    max-width: 800px;
+
+    margin:
+        0 auto
+        45px;
+
+    font-size: clamp(18px, 3vw, 28px);
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: #ffe8f7;
+
+    text-shadow:
+        0 0 8px #ff4db8;
+
+    animation: messageAnimation 3s ease;
+}
+
+@keyframes messageAnimation {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* SLIDESHOW */
+
+.slideshow {
+
+    width: min(850px, 94vw);
+
+    margin: auto;
+
+    position: relative;
+}
+
+/* PHOTO */
+
+.photo {
+
+    display: none;
+
+    width: 100%;
+
+    animation:
+        photoAppear 1.8s ease;
 
 }
 
-.photo{
-
-background:white;
-padding:12px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-cursor:pointer;
-transition:.3s;
-
+.photo.active {
+    display: block;
 }
 
-.photo:hover{
+/* IMAGE */
 
-transform:translateY(-10px);
+.photo img {
 
+    width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    border-radius: 22px;
+
+    border:
+        3px solid
+        rgba(255, 160, 220, 0.7);
+
+    background: rgba(0, 0, 0, 0.2);
+
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, 0.6),
+        0 0 50px rgba(255, 20, 147, 0.35);
+
+    animation:
+        imageZoom 5s ease-in-out forwards;
 }
 
-.photo img{
+/* PHOTO APPEAR */
 
-width:100%;
-height:300px;
-object-fit:cover;
-border-radius:15px;
+@keyframes photoAppear {
 
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.82)
+            translateY(30px);
+
+        filter: blur(12px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter: blur(0);
+    }
 }
 
-.caption{
+/* SLOW ZOOM */
 
-padding:15px;
-font-size:18px;
-text-align:center;
-color:#555;
+@keyframes imageZoom {
 
+    0% {
+        transform: scale(0.96);
+    }
+
+    100% {
+        transform: scale(1.04);
+    }
 }
 
-/* Popup */
+/* MEMORY NUMBER */
 
-.popup{
+.number {
 
-display:none;
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.92);
-justify-content:center;
-align-items:center;
-z-index:999;
+    margin-top: 16px;
 
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #ff9edc;
+
+    text-shadow:
+        0 0 10px #ff1493;
 }
 
-.popup img{
+/* FINAL MESSAGE */
 
-max-width:90%;
-max-height:90%;
-border-radius:15px;
-box-shadow:0 0 35px white;
+.final-message {
 
+    display: none;
+
+    margin:
+        35px auto
+        0;
+
+    max-width: 700px;
+
+    font-size: clamp(22px, 4vw, 35px);
+
+    line-height: 1.6;
+
+    color: #ffd1ef;
+
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493;
+
+    animation: finalAnimation 2s ease;
 }
 
-.close{
+@keyframes finalAnimation {
 
-position:absolute;
-top:20px;
-right:35px;
-font-size:50px;
-color:white;
-cursor:pointer;
+    0% {
+        opacity: 0;
 
+        transform: scale(0.7);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: scale(1);
+    }
 }
 
-.back{
+/* BACK BUTTON */
 
-display:block;
-width:220px;
-margin:50px auto;
-text-align:center;
-background:#ff4d88;
-color:white;
-padding:16px;
-border-radius:50px;
-text-decoration:none;
-font-size:22px;
+.back {
 
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding:
+        12px
+        28px;
+
+    border-radius: 40px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: bold;
+
+    background:
+        rgba(255, 50, 170, 0.18);
+
+    border:
+        1px solid
+        #ff65c7;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 20, 147, 0.5);
+
+    transition:
+        0.3s ease;
 }
 
-.back:hover{
+.back:hover {
 
-background:#ff2167;
+    background: #ff299f;
 
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 20px #ff1493,
+        0 0 40px #ff1493;
 }
 
-/* Floating Hearts */
+/* MOBILE */
 
-.heart{
+@media (max-width: 600px) {
 
-position:fixed;
-bottom:-40px;
-pointer-events:none;
-animation:floatUp linear forwards;
-z-index:-1;
+    .container {
 
-}
+        padding:
+            30px
+            12px
+            50px;
+    }
 
-@keyframes floatUp{
+    .title {
 
-0%{
-transform:translateY(0);
-opacity:1;
-}
+        font-size: 38px;
+    }
 
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
+    .message {
 
+        font-size: 18px;
+
+        margin-bottom: 30px;
+    }
+
+    .photo img {
+
+        width: 100%;
+
+        max-height: 60vh;
+
+        border-radius: 15px;
+    }
+
+    .number {
+
+        font-size: 16px;
+    }
+
+    .back {
+
+        margin-top: 25px;
+
+        padding:
+            11px
+            24px;
+    }
+
+    .background-text span {
+
+        font-size: 20px;
+    }
 }
 
 </style>
-  /* ==========================
-   MOBILE OPTIMIZATION
-========================== */
-
-@media (max-width: 768px){
-
-body{
-padding:20px 12px;
-}
-
-.card{
-width:100%;
-padding:25px 18px;
-border-radius:20px;
-}
-
-#intro h1{
-font-size:42px;
-text-align:center;
-}
-
-#intro p{
-font-size:18px;
-text-align:center;
-padding:0 15px;
-}
-
-.heading,
-.title{
-font-size:42px;
-line-height:1.2;
-text-align:center;
-}
-
-#letter{
-font-size:18px;
-line-height:1.9;
-min-height:auto;
-}
-
-#ending h1{
-font-size:48px;
-}
-
-#ending h2{
-font-size:28px;
-}
-
-#ending p{
-font-size:18px;
-line-height:1.8;
-}
-
-button{
-width:100%;
-font-size:18px;
-padding:16px;
-margin-top:40px;
-}
-
-img{
-max-width:100%;
-height:auto;
-border-radius:15px;
-}
-
-video{
-width:100%;
-border-radius:15px;
-}
-
-}
-
-/* Small phones */
-
-@media (max-width:480px){
-
-#intro h1{
-font-size:34px;
-}
-
-.heading,
-.title{
-font-size:34px;
-}
-
-#letter{
-font-size:16px;
-line-height:1.8;
-}
-
-#ending h1{
-font-size:40px;
-}
-
-#ending h2{
-font-size:24px;
-}
-
-#ending p{
-font-size:16px;
-}
-
-}
 
 </head>
 
 <body>
 
-<div class="container">
 
-<div class="header">
-
-<h1>📸 Childhood Memories 💖</h1>
-
-<p>
-
-Every picture holds a memory,
-every memory holds a smile,
-and every smile reminds me how lucky I am to know you. ❤️
-
-</p>
-
-</div>
-
-<h2 class="gallery-title">🌸 Photo Album 🌸</h2>
-
-<div class="gallery">
-
-<div class="photo">
-<img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/742381617_2390985741431289_360459583581782429_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_ohc=scVHD62lkX0Q7kNvwHpBWMe&_nc_oc=AdrGLFHcVdF0929NI1_p9FSyZUSSNU_pxz9OO7DkTC-14Eu95p7-nm-FCc3gruwMfgA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wFBEEHiCpFtiURA0WtJSP5pwR7vKbZNvp0-QKxDoM1RDQ&oe=6A7C5931" onclick="show(this.src)">
-<div class="caption">💕 Memory 1</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/741214671_1347552637492243_1646376452075519170_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=gYtFIbKTWi0Q7kNvwGOvqTH&_nc_oc=Ado10Jd9XBSf8JbVj-_VywwMhrxJDWs2u7GReO9jPNkvdt4Wy42c1RJZeYg8FE7SvlM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wEPlyGhEgTm0l1RQmjtVIubZvqxefMFIBH9dC2QCwnonQ&oe=6A7C5CD9" onclick="show(this.src)">
-<div class="caption">🌸 Memory 2</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/739294892_1374842381197698_2869486995010893282_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=9f807c&_nc_ohc=VpHYk-CDpCEQ7kNvwHOHUCj&_nc_oc=Adqc3TMBAnSKtJ44D-IqBrGG7oYPlsMyYfukS7q3a6O9j2ppKiXQhhQNxQd-SAdTWfo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wGJPfXWhbqW8PONsbO_gST8tLPscfkHaCyZfye4Y8YH6Q&oe=6A7C4ABC" onclick="show(this.src)">
-<div class="caption">✨ Memory 3</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/737875090_1035407835654897_8390093155129049540_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=D55sZ0FAXdMQ7kNvwGMOUgw&_nc_oc=AdrjxK_RtYoHPx2gS5FLJaXG95S2kXZAY8-LME72aLwlI1lm513PnK9D6AjCRCPs8X4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF7gA8Lq_WjM-oBdlU53xc1giG9l2ZiUBUJbVJSjRWbbA&oe=6A7C60AA" onclick="show(this.src)">
-<div class="caption">🥰 Memory 4</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/552173793_1789703098386263_5629220809622998093_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Vuou0DgHHBIQ7kNvwH-15k-&_nc_oc=Adq6iAziyCtzxkQBC5WQf9KxAyhU3yMWEP-ScptD48zA8C0wxwR6s6QmxLNkQGXo7GA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wEayONeC6knkqd_VkOCohX6j_2YQWFKU44ticyFLI4TZQ&oe=6A7C467D" onclick="show(this.src)">
-<div class="caption">❤️ Memory 5</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t1.15752-9/742581143_1989357258448622_3371415122706743927_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_ohc=6LzGGCEJPzYQ7kNvwEgUbvf&_nc_oc=AdpzOSym5VqOIVMlN66SCdApdfnjpHKrVE5UL-jUptImqcKxvKsb2M4TlUh1ZTMuodo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wF7GduBEFEHHnXtPA0tfj1F9ESXUG1n6zzBtYxGbQPA3Q&oe=6A7C42ED" onclick="show(this.src)">
-<div class="caption">💖 Memory 6</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/738243623_2086675622060270_3972352648723538770_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=r2ngjeaOOwQQ7kNvwHfCBf7&_nc_oc=AdpHrbUgA4JYykZmTYdr_Lh207CEz5x95KsIddpnOxDqe-35xGwdzESpp4sR92UBWN4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wG-FB1nzzIxMzgBIymklGPyZ4lRIazWUKyYiJDUa334uQ&oe=6A7C5486" onclick="show(this.src)">
-<div class="caption">🌹 Memory 7</div>
-</div>
-
-<div class="photo">
-<img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.15752-9/553419121_1309105744052868_8735667897365827304_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=6FHTRiG20_MQ7kNvwEgUId9&_nc_oc=AdqPp6HmgQoKsoDZ4zN-rN6wOfapDJ94COOVvdjuEGqQ8UPs-2y2gn_NrjONHYBPC-w&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_ss=7a22e&oh=03_Q7cD5wFJpks8jpmBsRb-uM1WkHmo24w3W6TybVsP_lInAV9Djg&oe=6A7C2DE0" onclick="show(this.src)">
-<div class="caption">🎂 Memory 8</div>
-</div>
-
-</div>
-
-<a class="back" href="menu.html">⬅ Back</a>
-
-</div>
-
-<div class="popup" id="popup" onclick="hide()">
-
-<span class="close">&times;</span>
-
-<img id="popupImage">
-
-</div>
+<!-- =====================================================
+     PUT YOUR IMAGE ADDRESSES HERE
+     
+     Replace the text inside the quotes.
+     
+     Example:
+     "https://example.com/myphoto.jpg"
+====================================================== -->
 
 <script>
 
-function show(src){
+const imageAddresses = [
 
-document.getElementById("popup").style.display="flex";
+    "IMAGE 1 ADDRESS HERE",
 
-document.getElementById("popupImage").src=src;
+    "IMAGE 2 ADDRESS HERE",
 
-}
+    "IMAGE 3 ADDRESS HERE",
 
-function hide(){
+    "IMAGE 4 ADDRESS HERE",
 
-document.getElementById("popup").style.display="none";
+    "IMAGE 5 ADDRESS HERE",
 
-}
+    "IMAGE 6 ADDRESS HERE",
 
-document.addEventListener("keydown",function(e){
+    "IMAGE 7 ADDRESS HERE",
 
-if(e.key==="Escape"){
+    "IMAGE 8 ADDRESS HERE"
 
-hide();
+];
 
-}
+</script>
+
+
+<!-- BACKGROUND TEXT -->
+
+<div class="background-text">
+
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+    <span>Happy Birthday to You ❤️</span>
+
+</div>
+
+
+<!-- GLOW -->
+
+<div class="glow"></div>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart"
+     style="left:8%; animation-delay:0s;">
+    ♥
+</div>
+
+<div class="heart"
+     style="left:22%; animation-delay:2s;">
+    ♥
+</div>
+
+<div class="heart"
+     style="left:40%; animation-delay:4s;">
+    ♥
+</div>
+
+<div class="heart"
+     style="left:62%; animation-delay:1s;">
+    ♥
+</div>
+
+<div class="heart"
+     style="left:82%; animation-delay:3s;">
+    ♥
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+    <h1 class="title">
+        Childhood Memories 🥹❤️
+    </h1>
+
+
+    <p class="message">
+
+        Your memories hold me,<br>
+
+        make me smile,<br>
+
+        and remind me of all the beautiful moments. ❤️
+
+    </p>
+
+
+    <!-- SLIDESHOW -->
+
+    <div class="slideshow" id="slideshow">
+
+    </div>
+
+
+    <!-- FINAL MESSAGE -->
+
+    <div
+        class="final-message"
+        id="finalMessage">
+
+        And these are only a few of the memories
+        that make you so special. ❤️✨
+
+    </div>
+
+
+    <!-- BACK BUTTON -->
+
+    <a
+        href="menu.html"
+        class="back">
+
+        ← Back to Menu
+
+    </a>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CREATE THE 8 PHOTO SLIDES
+===================================================== */
+
+const slideshow =
+    document.getElementById("slideshow");
+
+const finalMessage =
+    document.getElementById("finalMessage");
+
+
+/* CREATE EACH PHOTO */
+
+imageAddresses.forEach((address, index) => {
+
+    const photo =
+        document.createElement("div");
+
+    photo.className = "photo";
+
+
+    /* FIRST PHOTO ACTIVE */
+
+    if (index === 0) {
+
+        photo.classList.add("active");
+
+    }
+
+
+    photo.innerHTML = `
+
+        <img
+            src="${address}"
+            alt="Childhood Memory ${index + 1}"
+            onerror="this.style.display='none';"
+        >
+
+        <div class="number">
+
+            Memory ${index + 1} / 8 ❤️
+
+        </div>
+
+    `;
+
+
+    slideshow.appendChild(photo);
 
 });
 
-function heart(){
 
-const h=document.createElement("div");
+/* GET ALL PHOTOS */
 
-h.className="heart";
+const photos =
+    document.querySelectorAll(".photo");
 
-const emoji=["💖","💕","❤️","💗","🌸","✨"];
 
-h.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+/* CURRENT PHOTO */
 
-h.style.left=Math.random()*100+"vw";
+let current = 0;
 
-h.style.fontSize=(20+Math.random()*30)+"px";
 
-h.style.animationDuration=(4+Math.random()*4)+"s";
+/* =====================================================
+   CHANGE PHOTO EVERY 5 SECONDS
+===================================================== */
 
-document.body.appendChild(h);
+setInterval(() => {
 
-setTimeout(()=>{
 
-h.remove();
+    /* HIDE CURRENT */
 
-},8000);
+    photos[current]
+        .classList
+        .remove("active");
 
-}
 
-setInterval(heart,300);
+    current++;
+
+
+    /* IF THERE ARE STILL PHOTOS */
+
+    if (current < photos.length) {
+
+        photos[current]
+            .classList
+            .add("active");
+
+    }
+
+
+    /* AFTER PHOTO 8 */
+
+    else {
+
+        finalMessage.style.display =
+            "block";
+
+
+        /* WAIT 4 SECONDS */
+
+        setTimeout(() => {
+
+
+            finalMessage.style.display =
+                "none";
+
+
+            /* RESET */
+
+            current = 0;
+
+
+            photos[current]
+                .classList
+                .add("active");
+
+
+        }, 4000);
+
+    }
+
+
+}, 5000);
 
 </script>
 
 </body>
+
 </html>
+
+
